@@ -53,7 +53,8 @@ class Evaluator:
         img_pred = orig_img_pred[y:y + h, x:x + w]
         img_gt = orig_img_gt[y:y + h, x:x + w]
         # compute the ssim
-        ssim = compare_ssim(img_pred, img_gt, multichannel=True)
+        data_range=np.max([np.max(img_pred),np.max(img_gt)])-np.min([np.min(img_pred),np.min(img_gt)])
+        ssim = compare_ssim(img_pred,img_gt,multichannel=True,data_range=data_range,channel_axis=-1)
 
         return ssim
 
