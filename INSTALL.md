@@ -1,7 +1,7 @@
 ### Set up the python environment
 
 ```shell
-conda create -n animatable_nerf python=3.7
+conda create -n animatable_nerf python=3.8
 conda activate animatable_nerf
 
 # make sure that the pytorch cuda is consistent with the system cuda
