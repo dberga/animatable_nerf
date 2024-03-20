@@ -5,7 +5,7 @@ conda create -n animatable_nerf python=3.8
 conda activate animatable_nerf
 
 # make sure that the pytorch cuda is consistent with the system cuda
-# e.g., if your system cuda is 10.0, install torch 1.4 built from cuda 10.1
+# e.g., if your system cuda is 10.1, install torch 1.4 built from cuda 10.1
 conda install pytorch==1.4.0 cudatoolkit=10.1 -c pytorch
 
 pip install -r requirements.txt
