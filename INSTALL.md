@@ -15,7 +15,7 @@ cd $ROOT
 git submodule update --init --recursive
 
 # install aninerf requirements
-pip install -r requirements.txt
+pip install -r requirements.txt --force-reinstall
 ```
 
 If someone wants to run the baseline methods `NHR` and `NT`, please install the libraries:
