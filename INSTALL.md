@@ -1,34 +1,36 @@
 ### Set up the python environment
 
 ```shell
-conda create -n animatable_nerf python=3.8
-conda activate animatable_nerf
+conda create -n aninerf python=3.8
+conda activate aninerf
 
 # make sure that the pytorch cuda is consistent with the system cuda
 # e.g., if your system cuda is 10.1, install torch 1.4 built from cuda 10.1
 conda install pytorch==1.4.0 cudatoolkit=10.1 -c pytorch
 
+# clone your repo and go to your aninerf folder and its submodules
+git clone https://github.com/dberga/aninerf.git
+ROOT=$PWD/aninerf
+cd $ROOT
+git submodule update --init --recursive
+
+# install aninerf requirements
 pip install -r requirements.txt
 ```
 
 If someone wants to run the baseline methods `NHR` and `NT`, please install the libraries:
 
 ```shell
-# install poinetnet2
-ROOT=/path/to/animatable_nerf
+# install pointnet2
 cd $ROOT/lib/csrc/pointnet2
 python setup.py build_ext --inplace
 
 # install PCPR
-cd ~
-git clone https://github.com/wuminye/PCPR.git
-cd PCPR
+cd $ROOT/PCPR
 python setup.py install
 
 # install pytorch3d
-cd ~
-git clone https://github.com/facebookresearch/pytorch3d.git
-cd pytorch3d
+cd $ROOT/pytorch3d
 git checkout tags/v0.4.0
 echo "edit pytorch3d/csrc/pulsar/global.h file by adding '#include <vector_functions.h>' in header, and comment make_float3 function"
 python setup.py install
